@@ -155,3 +155,17 @@ def strCopies(string, sub, n):
         return strCopies(string[1:], sub, n - 1)
     return strCopies(string[1:], sub, n)
 ##print(strCopies("ijiiiiiij", "iiii", 3))
+def strDist(string, sub):
+    subl = len(sub)
+    stringl = len(string)
+    if stringl < subl:
+        return 0
+    if string[:subl] != sub:
+        return strDist(string[1:], sub)
+    if string[stringl - subl:] != sub:
+        return strDist(string[:-1], sub)
+    return stringl
+##print(strDist("catcowcat", "cat"))
+##print(strDist("catcowcat", "cow"))
+##print(strDist("cccatcowcatxx", "cat"))
+
